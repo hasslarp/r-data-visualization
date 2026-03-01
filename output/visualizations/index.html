@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualizations - Index</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        /* Header */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            text-align: center;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Search and Filter Section */
+        .search-filter-section {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .filter-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .filter-label {
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .filter-select {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Visualization Grid */
+        .visualization-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Visualization Card */
+        .visualization-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .visualization-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .visualization-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .visualization-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .visualization-link {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .visualization-link:hover {
+            background-color: #2980b9;
+        }
+
+        .visualization-link:focus {
+            outline: 2px solid #3498db;
+            outline-offset: 2px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            main {
+                padding: 1rem;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .visualization-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-section {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Data Visualizations</h1>
+        <p>Explore and navigate through various data analysis visualizations</p>
+    </header>
+
+    <main>
+        <div class="search-filter-section">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search visualizations...">
+            
+            <div class="filter-section">
+                <div>
+                    <label class="filter-label" for="categoryFilter">Category:</label>
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="all">All</option>
+                        <option value="time-series">Time Series</option>
+                        <option value="comparative">Comparative Analysis</option>
+                        <option value="statistical">Statistical</option>
+                        <option value="interactive">Interactive Dashboards</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="filter-label" for="sortBy">Sort By:</label>
+                    <select id="sortBy" class="filter-select">
+                        <option value="title">Title</option>
+                        <option value="category">Category</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="visualization-grid" id="visualizationGrid">
+            <!-- Visualization cards will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Data Analysis Project</p>
+    </footer>
+
+    <script>
+        // Visualization metadata
+        const visualizations = [
+            {
+                title: "Monthly Prescription Trends",
+                description: "Time series visualization of monthly prescription data",
+                category: "time-series",
+                file: "monthly_trends.html"
+            },
+            {
+                title: "Year-over-Year Comparison",
+                description: "Comparison of prescription trends across years",
+                category: "time-series",
+                file: "year_over_year_comparison.html"
+            },
+            {
+                title: "Seasonality Analysis",
+                description: "Analysis of prescription seasonality patterns",
+                category: "time-series",
+                file: "seasonality_analysis.html"
+            },
+            {
+                title: "Yearly Trends by Drug Group",
+                description: "Yearly prescription trends segmented by drug groups",
+                category: "time-series",
+                file: "yearly_trends_by_drug_group.html"
+            },
+            {
+                title: "Gender Comparison",
+                description: "Comparative analysis of prescriptions between genders",
+                category: "comparative",
+                file: "gender_comparison.png"
+            },
+            {
+                title: "Drug Group Comparison",
+                description: "Comparison of prescriptions across different drug groups",
+                category: "comparative",
+                file: "drug_group_comparison.png"
+            },
+            {
+                title: "Age Distribution",
+                description: "Distribution of prescriptions by age groups",
+                category: "statistical",
+                file: "age_distribution.png"
+            },
+            {
+                title: "Demographic Heatmap",
+                description: "Heatmap showing prescription distribution by demographics",
+                category: "statistical",
+                file: "demographic_heatmap.png"
+            },
+            {
+                title: "Drug Period Heatmap",
+                description: "Heatmap of prescription periods for different drugs",
+                category: "statistical",
+                file: "drug_period_heatmap.png"
+            },
+            {
+                title: "Statistics Chart",
+                description: "Visualization of summary statistics",
+                category: "statistical",
+                file: "statistics_chart.html"
+            },
+            {
+                title: "Boxplot by Drug Group",
+                description: "Boxplots showing prescription distributions by drug groups",
+                category: "statistical",
+                file: "boxplot_by_drug_group.html"
+            },
+            {
+                title: "Histogram of Prescriptions",
+                description: "Histogram showing prescription frequency distribution",
+                category: "statistical",
+                file: "histogram_prescriptions.html"
+            },
+            {
+                title: "Interactive Dashboard",
+                description: "Interactive dashboard with multiple visualization panels",
+                category: "interactive",
+                file: "interactive_dashboard.html"
+            },
+            {
+                title: "Dashboard with Filters",
+                description: "Interactive dashboard with filtering capabilities",
+                category: "interactive",
+                file: "dashboard_with_filters.html"
+            },
+            {
+                title: "Dashboard with Range Picker",
+                description: "Dashboard with date range selection functionality",
+                category: "interactive",
+                file: "dashboard_with_range_picker.html"
+            },
+            {
+                title: "Advanced Dashboard with Zoom Sync",
+                description: "Advanced dashboard with synchronized zooming",
+                category: "interactive",
+                file: "advanced_dashboard_zoom_sync.html"
+            }
+        ];
+
+        // DOM elements
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const sortBySelect = document.getElementById('sortBy');
+        const visualizationGrid = document.getElementById('visualizationGrid');
+
+        // Initialize visualization grid
+        function renderVisualizations() {
+            // Get current filter and sort settings
+            const searchTerm = searchInput.value.toLowerCase();
+            const category = categoryFilter.value;
+            const sortBy = sortBySelect.value;
+
+            // Filter visualizations
+            let filtered = visualizations.filter(v => {
+                const matchesSearch = v.title.toLowerCase().includes(searchTerm) || v.description.toLowerCase().includes(searchTerm);
+                const matchesCategory = category === 'all' || v.category === category;
+                return matchesSearch && matchesCategory;
+            });
+
+            // Sort visualizations
+            filtered.sort((a, b) => {
+                if (sortBy === 'title') {
+                    return a.title.localeCompare(b.title);
+                } else if (sortBy === 'category') {
+                    return a.category.localeCompare(b.category);
+                }
+                return 0;
+            });
+
+            // Render the grid
+            visualizationGrid.innerHTML = '';
+            filtered.forEach(v => {
+                const card = document.createElement('div');
+                card.className = 'visualization-card';
+                card.innerHTML = `
+                    <h3>${v.title}</h3>
+                    <p>${v.description}</p>
+                    <a href="${v.file}" class="visualization-link">View Visualization</a>
+                `;
+                visualizationGrid.appendChild(card);
+            });
+        }
+
+        // Event listeners
+        searchInput.addEventListener('input', renderVisualizations);
+        categoryFilter.addEventListener('change', renderVisualizations);
+        sortBySelect.addEventListener('change', renderVisualizations);
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', renderVisualizations);
+    </script>
+</body>
+</html>

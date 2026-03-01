@@ -5,5 +5,8 @@
 .RData
 __pycache__/
 *.pyc
-output/
+output/*
+!output/visualizations/
+output/visualizations/*
+!output/visualizations/index.html
 .DS_Store
