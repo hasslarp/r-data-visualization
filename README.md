@@ -49,7 +49,7 @@ sudo apt update
 sudo apt install r-base r-base-dev
 
 # Install system dependencies
-sudo apt install libcurl4-openssl-dev libxml2-dev libssl-dev
+sudo apt install libcurl4-openssl-dev libxml2-dev libssl-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev libwebp-dev
 
 # Install R packages
 R -e "install.packages(c('tidyverse', 'plotly', 'htmlwidgets', 'lubridate', 'scales', 'zoo'))"
@@ -150,7 +150,3 @@ r-analyze-data/
 ## License
 
 This project is for educational and research purposes.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit issues or pull requests.
