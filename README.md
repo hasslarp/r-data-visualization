@@ -52,7 +52,7 @@ sudo apt install r-base r-base-dev
 sudo apt install libcurl4-openssl-dev libxml2-dev libssl-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev libwebp-dev
 
 # Install R packages
-R -e "install.packages(c('tidyverse', 'plotly', 'htmlwidgets', 'lubridate', 'scales', 'zoo'))"
+sudo R -e "install.packages(c('tidyverse', 'plotly', 'htmlwidgets', 'lubridate', 'scales', 'zoo'))"
 ```
 
 ## Usage
